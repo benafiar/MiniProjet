@@ -1,0 +1,48 @@
+
+{% extends 'securite/base.html.twig' %}
+
+{% block body %}
+
+   
+<div class="container">
+<div class="container">
+<!-- Card -->
+<div class="card mx-xl-5">
+
+  <!-- Card body -->
+  <div class="card-body">
+
+    <!-- Default form subscription -->
+    <form action="{{ path('securiteLogin') }}" method="post">
+      <center><h1 class=" text" style="color:Orchid  ">Connexion</h1></center>
+
+    
+      <!-- Default input name -->
+      <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Adresse email</label>
+      <input type="email" class="form-control" name="_username" placeholder="Adresse email ..." id="defaultFormCardNameEx" required  >
+
+      <br>
+
+      <!-- Default input email -->
+      <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">Mot de  passe</label>
+      <input type="password"  class="form-control" name="_password"  placeholder="Mot de  passe ..."  id="defaultFormCardEmailEx" required>
+
+      <div class="text-center py-4 mt-3">
+        <button class="btn btn-outline-purple" type="submit"   >submit<i
+            class="fa fa-paper-plane-o ml-2"></i></button>
+            <a href="{{ path('securite') }}" class="btn btn-link">Je n'ai pas encore de compte !</a>
+      </div>
+    </form>
+    <!-- Default form subscription -->
+
+  </div>
+  <!-- Card body -->
+
+</div>
+</div>
+<!-- Card -->
+
+
+
+
+{% endblock %}

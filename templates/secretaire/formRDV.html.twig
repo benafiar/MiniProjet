@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% form_theme formRDV 'bootstrap_4_layout.html.twig' %}
+{% block head %}
+
+{% endblock %}
+{% block body   %}
+<script ></script>
+
+<style>
+    
+</style>
+
+{% include 'medecin/header.html.twig' %}
+<div class="back_ground">
+<center>
+ <h1 class="text-capitalize " style="color:RosyBrown">Gérer Les Rendez-Vous</h1>
+</center>
+<div class="container">
+<div class="jumbotron blue-grey lighten-5" >
+  <div class="row">
+    <div class="col-sm">
+    {{ form_start(formRDV, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                 {{ form_row(formRDV.patients) }}
+                 {{ form_row(formRDV.nom_patient,{'attr':{'placeholder':' '}}) }}
+  
+                 {{ form_row(formRDV.date_RDV,{'attr':{'placeholder':'date rdv '}}) }}
+
+    </div>      
+    <div class="col-sm">
+                 {{ form_label(formRDV.heure_RDV, 'Heure rendez-vous') }}
+                 {{ form_widget(formRDV.heure_RDV,{'attr':{'placeholder':'heure rdv'}}) }}
+                 {{ form_row(formRDV.commentaire,{'attr':{'placeholder':'commentaire '}}) }}
+        
+    </div>
+  </div>
+   <center>{{ form_widget(formRDV.save, { 'label': 'Ajouter RDV' }) }} </center> 
+   {{ form_end(formRDV) }}
+</div>
+
+   <center>
+    <h1 class="text-center text-capitalize m-4" style="color:RosyBrown"> Listes Des Rendez-Vous </h1>
+   </center>     
+<table class="table">
+  <thead>
+
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Date RDV</th>
+      <th scope="col">Heure</th>
+      <th scope="col">Commentaire</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    {% for rendez_vous in rendez_vous %}
+    <tr>
+      <th scope="row">{{rendez_vous.id}}</th>
+      <td>{{rendez_vous.getNomPatient()}}</td>
+      <td>{{rendez_vous.getDateRDV()|date("m/d/Y")}}</td>
+      
+      <td>{{rendez_vous.getHeureRDV()|date("H:i")}}</td>
+      <td>{{rendez_vous.getCommentaire()}}</td>
+      <th >
+          <a class="nav-link" href="{{path('editRDV', {'id': rendez_vous.id })}}" style="color:Green">Modifier</a>
+      </th>
+      <th ><a class="nav-link" href="{{path('deleteRDV', {'id': rendez_vous.id })}}" style="color:red">Supprimer</a></th>
+    </tr>
+   {% endfor %}
+
+   </div>    
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+{% form_theme formPatient 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+<style>
+ 
+</style>
+
+{% include 'medecin/header.html.twig' %}
+<div class="back_ground">
+<center>
+ <h1 class=" text-capitalize" style="color:RosyBrown ">Gérer Les Patient</h1>
+</center>
+<div class="container">
+<div class="jumbotron blue-grey lighten-5" >
+  <div class="row">
+    <div class="col-sm">
+        {{ form_start(formPatient, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                 {{ form_row(formPatient.date_creation_fiche,{'attr':{'placeholder':'date creation fiche'}}) }}
+                 {{ form_row(formPatient.cin,{'attr':{'placeholder':'cin'}}) }}
+                 {{ form_row(formPatient.nom,{'attr':{'placeholder':'nom & prenom'}}) }}
+    </div>      
+    <div class="col-sm">
+                
+                 
+                 {{ form_row(formPatient.adresse,{'attr':{'placeholder':'adresse'}}) }}
+                 {{ form_row(formPatient.profession,{'attr':{'placeholder':'profession'}}) }}
+                  {{ form_row(formPatient.prenom,{'attr':{'placeholder':'prenom'}}) }}
+    </div>  
+    <div class="col-sm">
+                
+                 {{ form_row(formPatient.date_naissance,{'attr':{'placeholder':'date_naissance'}}) }}
+                 {{ form_row(formPatient.numero_telephone,{'attr':{'placeholder':'numero_telephone'}}) }}
+                 
+    </div>         
+  
+  </div>
+  
+<center>
+{{ form_widget(formPatient.save, { 'label': 'Ajouter' }) }}
+
+</center>
+{{ form_end(formPatient) }}
+</div>
+<center>
+  <h1 class="text-center text-capitalize m-4" style="color:RosyBrown ">Listes Des Patients </h1>
+</center>     
+<table class="table">
+  <thead>
+
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Date Creation</th>
+      <th scope="col">Cin</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Profession</th>
+      <th scope="col">Date_Naissance</th>
+      <th scope="col">Numero_Telephone</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    {% for patient in patients %}
+    <tr>
+      <th scope="row">{{patient.id}}</th>
+      <td>{{patient.date_creation_fiche|date("m/d/Y")}}</td>
+      <td>{{patient.cin}}</td>
+      <td>{{patient.nom}}</td>
+      <td>{{patient.prenom}}</td>
+      <td>{{patient.adresse}}</td>
+      <td>{{patient.profession}}</td>
+      <td>{{patient.date_naissance|date("m/d/Y")}}</td>
+      <td>{{patient.numero_telephone}}</td>
+      <th><a class="nav-link" href="{{path('editPatient', {'id': patient.id })}}" style="color:Green">Modifier</a></th>
+      <th><a class="nav-link" href="{{path('deletePatient', {'id': patient.id })}}" style="color:red">Supprimer</a></th>
+    </tr>
+   {% endfor %}          
+
+  </div>
+{% endblock %}

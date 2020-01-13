@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formConsultation 'bootstrap_4_layout.html.twig' %}
+{% block body   %}
+<style>
+   
+</style>
+{% include 'medecin/header.html.twig' %}
+<!--Carousel Wrapper-->
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner " role="listbox">
+    <div class="carousel-item active">
+      <div class="view">
+        <img class="d-block w-100" style="
+    HEIGHT: 480PX;
+" src="/build/img/overlays/Capture2.PNG" alt="First slide" >
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">Informations Médicales</h3>  
+      </div>
+    </div>
+    
+
+  <!--/.Slides-->
+ 
+</div>
+<!--/.Carousel Wrapper-->
+
+<div class="back_ground">
+
+
+  </br> </br>
+  
+<div class="container">
+<div class="jumbotron blue-grey lighten-5" >
+  <div class="row">
+    <div class="col-sm">
+    {{ form_start(formConsultation, {'attr': {'novalidate': 'novalidate'}}) }}
+     
+    {{ form_row(formConsultation.patients) }}
+    </div>      
+    <div class="col-sm">   
+         <div class="row">
+      {{ form_row(formConsultation.nom_medecin,{'attr':{'placeholder':''}}) }}
+      {{ form_row(formConsultation.prenom_medecin,{'attr':{'placeholder':''}}) }}
+      </div>    
+    </div>
+  </div>
+ </div>
+
+  <div class="jumbotron blue-grey lighten-5" >
+     <center><legend>Consultation:</legend> </center>
+  <div class="row">
+    <div class="col-sm">
+    
+       {{ form_row(formConsultation.taille,{'attr':{'placeholder':''}}) }}
+       {{ form_row(formConsultation.poid,{'attr':{'placeholder':' '}}) }}
+       {{ form_row(formConsultation.tension,{'attr':{'placeholder':''}}) }}
+       {{ form_row(formConsultation.temperature,{'attr':{'placeholder':''}}) }}
+                            
+    </div>      
+    <div class="col-sm">
+    
+    {{ form_row(formConsultation.groupe_sanguin,{'attr':{'placeholder':''}}) }}
+    {{ form_row(formConsultation.examen,{'attr':{'placeholder':''}}) }}
+    {{ form_row(formConsultation.conclusion,{'attr':{'placeholder':''}}) }}
+                
+    </div>
+  </div>
+    <center>{{ form_widget(formConsultation.save, { 'label': 'Enregistrer' }) }} </center> 
+
+   {{ form_end(formConsultation) }}
+ </div>
+
+
+<center>
+    <h1 class="text-center text-capitalize m-4" style="color:RosyBrown"> </h1>
+   </center>     
+<table class="table">
+  <thead>
+    <tr>
+     <th scope="col">cin</th>
+      <th scope="col">nom medecin </th>
+      <th scope="col">prenom medecin</th>
+      <th scope="col">Taille </th>
+      <th scope="col">Poid</th>
+      <th scope="col">Tension</th>
+      <th scope="col">Temperature</th>
+      <th scope="col">Groupe sanguin</th>
+      <th scope="col">Resultat Examen</th>
+      <th scope="col">Conclusion</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for consultation in consultation %}
+    <tr>
+      <th scope="row">{{consultation.getPatients().cin}}</th>
+       <td>{{consultation.getNomMedecin()}}</td>
+      <td>{{consultation.getPrenomMedecin()}}</td>
+      <td>{{consultation.getTaille()}}</td>
+      <td>{{consultation.getPoid()}}</td>
+      <td>{{consultation.getTension()}}</td>
+      <td>{{consultation.getTemperature()}}</td>
+      <td>{{consultation.getGroupeSanguin()}}</td>
+      <td>{{consultation.getExamen()}}</td>
+      <td>{{consultation.getConclusion()}}</td>
+      <th >
+          <a class="nav-link" href="{{path('editConsultation', {'id': consultation.id })}}" style="color:Green">Modifier</a>
+      </th>
+      <th ><a class="nav-link" href="{{path('deleteConsultation', {'id': consultation.id })}}" style="color:red">Supprimer</a></th>
+    </tr>
+  {% endfor %}    
+</div>
+
+{% endblock %}

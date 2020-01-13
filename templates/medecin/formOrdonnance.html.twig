@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formOrdonnance 'bootstrap_4_layout.html.twig' %}
+{% block body   %}
+<style>
+
+</style>
+{% include 'medecin/header.html.twig' %}
+<!--Carousel Wrapper-->
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <div class="view">
+        <img class="d-block w-100 " style="
+    HEIGHT: 480PX;
+" src="/build/img/overlays/Capture1.PNG" alt="First slide" >
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">Informations Médicaments</h3>
+       
+      </div>
+    </div>
+    
+
+  <!--/.Slides-->
+ 
+</div>
+<!--/.Carousel Wrapper-->
+
+<div class="back_ground"  >
+
+
+ </br> </br>
+
+<div class="container">
+<div class="jumbotron blue-grey lighten-5" >
+  <div class="row">
+    <div class="col-sm">
+    {{ form_start(formOrdonnance, {'attr': {'novalidate': 'novalidate'}}) }}
+       {{ form_label(formOrdonnance.consultation, 'Nom Patient') }}
+       {{ form_widget(formOrdonnance.consultation) }}
+       {{ form_row(formOrdonnance.Nom_Medicament,{'attr':{'placeholder':''}}) }}             
+    </div>      
+     <div class="col-sm">
+
+        {{ form_row(formOrdonnance.Dosa_Medicament,{'attr':{'placeholder':''}}) }}
+       {{ form_row(formOrdonnance.Quantite_Medicament,{'attr':{'placeholder':' '}}) }}
+       {{ form_row(formOrdonnance.Pasologie_medicament,{'attr':{'placeholder':''}}) }}               
+    </div>      
+    
+  </div>
+    <center>{{ form_widget(formOrdonnance.save, { 'label': 'Enregistrer' }) }} </center> 
+   
+   {{ form_end(formOrdonnance) }}
+</div>
+<center>
+    <h1 class="text-center text-capitalize m-4" style="color:RosyBrown"> </h1>
+</center>     
+
+<table class="table">
+  <thead>
+    <tr>
+     <th scope="col">Nom Patient</th>
+      <th scope="col">Nom medicament </th>
+      <th scope="col">Dosage </th>
+      <th scope="col">Quantite </th>
+      <th scope="col">Pasologie</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ordonnance in ordonnance %}
+    <tr>
+      <th scope="row">{{ordonnance.getConsultation().patients}}</th>
+      <td>{{ordonnance.getNomMedicament()}}</td>
+      <td>{{ordonnance.getDosaMedicament()}}</td>
+      <td>{{ordonnance.getQuantiteMedicament()}}</td>
+      <td>{{ordonnance.getPasologieMedicament()}}</td>
+      <th >
+          <a class="nav-link" href="{{path('editOrdonnance', {'id': ordonnance.id })}}"  style="color:Green">Modifier</a>
+      </th>
+      <th ><a class="nav-link" href="{{path('deleteOrdonnance', {'id': ordonnance.id })}}"  style="color:red">Supprimer</a></th>
+      
+    </tr>
+  {% endfor %}    
+</div>
+
+{% endblock %}

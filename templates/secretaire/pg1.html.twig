@@ -1,0 +1,116 @@
+
+{% extends 'base.html.twig' %}
+{% block body   %}
+<style>
+#id{font-size:50px !important;}
+    
+}
+</style>
+
+{% include 'medecin/header.html.twig' %}
+<!--Carousel Wrapper-->
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner " role="listbox">
+    <div class="carousel-item active">
+      <div class="view">
+        <img class="d-block w-100 h-25" src="/build/img/overlays/bg1.png" alt="First slide" >
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive"></h3>  
+      </div>
+    </div>
+  <!--/.Slides-->
+ 
+</div>
+<!--/.Carousel Wrapper-->
+</br></br>
+<div class="container">
+<center>
+  <div class="row">
+    <div class="col-md-4" ><i class="fas fa-map-marker-alt" id="id"></i></br>Adresse</br>cabinet du Dr. , Rue Med Hedi Khefacha,  Monastir, Tunisie 5000</div>
+    <div class="col-md-4"><i class="fas fa-phone-alt" id="id"></i></br>Téléphone </br> (+216) 73 224 000 </div>
+    <div class="col-md-4"><i class="far fa-clock" id="id"></i></br>Horaires </br><b>Lundi->Vendredi</b> 09:30-19:00  </br> <b>Samedi: 09:30-15:00 </b></div>
+  </div>
+</center>
+</div>
+
+</br></br></br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+       <!-- Card -->
+    
+
+  <!--Google map-->
+  
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.10681905265!2d10.79573231492029!3d35.77275233255529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13020d55ba84dbf3%3A0x86bf110b54f5fed6!2sCabinet%20de%20m%C3%A9decine%20g%C3%A9n%C3%A9rale%20du%20Dr.%20Mohsen%20Aziz%20Sakka!5e0!3m2!1sfr!2stn!4v1575317852231!5m2!1sfr!2stn" width="500" height="450" frameborder="0" style="border:0;" ></iframe>
+
+
+ </div>
+ 
+    <div class="col-md-6">
+   <center> <h2>À propos de nous </h2></center>
+    <p>
+      Notre clinique médicale s'engage à fournir des soins de la plus haute qualité aux patients.
+       Notre dévouement à l'excellence, à la compassion et à l'innovation est enraciné dans notre dévouement à l'art et à la science de la guérison,
+        qui soutient chaque aspect de notre mission et des soins que nous donnons à nos patients.
+    </p>
+    </div>
+  </div>
+</div>
+</br></br>
+
+<!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a class="btn-floating btn-fb mx-1">
+          <i class="fab fa-facebook-f"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-tw mx-1">
+          <i class="fab fa-twitter"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-gplus mx-1">
+          <i class="fab fa-google-plus-g"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-li mx-1">
+          <i class="fab fa-linkedin-in"> </i>
+        </a>
+      </li>
+    
+    </ul>
+    <!-- Social buttons -->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright
+ 
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+
+{% endblock %}
